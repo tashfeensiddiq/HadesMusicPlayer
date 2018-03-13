@@ -35,7 +35,6 @@ public class MainActivity extends Activity implements MediaPlayerControl {
     private boolean musicBound=false;
 
     private ArrayList<Song> songList;
-    private ListView songView;
 
 
     private MusicController controller;
@@ -46,7 +45,7 @@ public class MainActivity extends Activity implements MediaPlayerControl {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        songView = (ListView)findViewById(R.id.song_list);
+        ListView songView = (ListView) findViewById(R.id.song_list);
         songList = new ArrayList<Song>();
         getSongList();
 
