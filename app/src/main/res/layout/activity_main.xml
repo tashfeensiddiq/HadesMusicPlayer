@@ -5,13 +5,16 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="#FF330000"
-    tools:context=".MainActivity" >
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
 
     <ListView
         android:id="@+id/song_list"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:divider="#9E9E9E"
+        android:dividerHeight="1sp">
     </ListView>
 
 </LinearLayout>

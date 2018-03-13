@@ -6,14 +6,14 @@
         android:id="@+id/action_shuffle"
         android:icon="@drawable/ic_shuffle_black_24dp"
         android:orderInCategory="1"
-        android:title="Shuffle"
-        app:showAsAction="always" />
+        android:title="@string/shuffle"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_end"
         android:icon="@drawable/ic_stop_black_24dp"
         android:orderInCategory="2"
-        android:title="End"
+        android:title="@string/end"
         app:showAsAction="always" />
 
 </menu>
