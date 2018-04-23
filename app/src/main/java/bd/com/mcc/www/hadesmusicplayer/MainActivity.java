@@ -58,8 +58,6 @@ public class MainActivity extends Activity implements MediaPlayerControl {
             // Code for above or equal 23 API Oriented Device
             // Your Permission granted already .Do next code
             requestPermission();
-
-        } else {
             ListView songView = (ListView) findViewById(R.id.song_list);
             songList = new ArrayList<Song>();
             getSongList();
@@ -70,6 +68,22 @@ public class MainActivity extends Activity implements MediaPlayerControl {
                 }
             });
 
+            SongAdapter songAdt = new SongAdapter(this, songList);
+            songView.setAdapter(songAdt);
+
+            setController();
+
+        }
+        else {
+            ListView songView = (ListView) findViewById(R.id.song_list);
+            songList = new ArrayList<Song>();
+            getSongList();
+
+            Collections.sort(songList, new Comparator<Song>() {
+                public int compare(Song a, Song b) {
+                    return a.getTitle().compareTo(b.getTitle());
+                }
+            });
 
             SongAdapter songAdt = new SongAdapter(this, songList);
             songView.setAdapter(songAdt);
@@ -165,6 +179,7 @@ public class MainActivity extends Activity implements MediaPlayerControl {
     @Override
     protected void onResume(){
         super.onResume();
+
         if(paused){
             setController();
             paused=false;
@@ -296,7 +311,8 @@ public class MainActivity extends Activity implements MediaPlayerControl {
 
         if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             Toast.makeText(MainActivity.this, "Write External Storage permission allows us to do store images. Please allow this permission in App Settings.", Toast.LENGTH_LONG).show();
-        } else {
+        }
+        else {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
         }
     }
@@ -319,9 +335,6 @@ public class MainActivity extends Activity implements MediaPlayerControl {
                     songView.setAdapter(songAdt);
 
                     setController();
-                    Log.e("value", "Permission     @Override\nGranted, Now you can use local drive .");
-                } else {
-                    Log.e("value", "Permission Denied, You cannot use local drive .");
                 }
                 break;
         }
